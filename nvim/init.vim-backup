@@ -1,0 +1,124 @@
+set     tabstop =2     " Width of tab character
+set softtabstop =2     " Fine tunes the amount of white space to be added
+set  shiftwidth =2     " Determines the amount of whitespace to add in normal mode
+set expandtab          " Uses space instead of tabs set autoindent
+
+set autoindent              " indent a new line the same amount as the line just typed
+
+set foldmethod =syntax " Fold functions 
+set nu                 " Enable numbered columns
+
+set nohlsearch
+
+set mouse=v                 " middle-click paste with 
+set mouse=a                 " enable mouse click
+
+set clipboard=unnamedplus   " using system clipboard
+set wildmode=longest,list   " get bash-like tab completions
+
+set cc=80                  " set an 80 column border for good coding style
+set cursorline              " highlight current cursorline
+
+set ttyfast                 " Speed up scrolling in Vim
+
+set backupdir=~/.cache/nvim " Directory to store backup files.
+
+filetype plugin indent on   "allow auto-indenting depending on file type
+filetype plugin on
+
+if has("autocmd")
+
+  " Automatic change between relative and absolute line numbers
+  augroup numbertoggle
+    autocmd!
+  
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu | endif
+  
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif
+  augroup END
+
+  " Load indentantion rules and plugins according to the detected filetype
+  filetype plugin indent on
+
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+endif
+
+call plug#begin("~/.vim/plugged")
+  " Theme
+  Plug 'dracula/vim'
+
+  " LSP Support
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'neovim/nvim-lspconfig'                           " Required
+
+  " Autocompletion Engine
+  Plug 'hrsh7th/nvim-cmp'         " Required
+  Plug 'hrsh7th/cmp-nvim-lsp'     " Required
+  Plug 'hrsh7th/cmp-buffer'       " Optional
+  Plug 'hrsh7th/cmp-path'         " Optional
+  Plug 'saadparwaiz1/cmp_luasnip' " Optional
+  Plug 'hrsh7th/cmp-nvim-lua'     " Optional
+
+  "  Snippets
+  Plug 'L3MON4D3/LuaSnip'             " Required
+  Plug 'rafamadriz/friendly-snippets' " Optional
+
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v1.x'}
+  " File Explorer with Icons
+  Plug 'scrooloose/nerdtree'
+  Plug 'ryanoasis/vim-devicons'
+
+  " File Search
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+call plug#end()
+
+" Enable theming support
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme dracula
+
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Toggle
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
+" requires silversearcher-ag
+" used to ignore gitignore files
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" open new split panes to right and below
+set splitright
+set splitbelow
+
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+
+" use alt+hjkl to move between split/vsplit panels
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+au BufWritePre /tmp/* setlocal noundofile
+
