@@ -24,7 +24,7 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 -- REPLACE
 -----------------------
 -- Replace all occurrences of a word in the file
-map("n", "<leader>sg", [[:%s/\<<C-r><C-w>\>//gc<Left><Left><Left>]])
+map("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>//gc<Left><Left><Left>]])
 ---- Replace all occurrences of a word in the line
 map({"n", "v"}, "<leader>sl", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
