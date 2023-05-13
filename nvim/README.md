@@ -1,10 +1,8 @@
 # Functions
 `<Alt + k>` = Move to function begin (visual and normal modes).\
 `<Alt + j>` = Move to function end (visual and normal modes).\
-`<Space + a>` = Add space between function definition and condition. (normal\
-mode).\
-`<Space + b>` = Remove space between function definition and condition. (normal\
-mode).\
+`<Space + a>` = Add space between function definition and condition. (normal mode).
+`<Space + b>` = Remove space between function definition and condition. (normal mode).\
 
 # Move Lines
 `<S + j>` = Move lines down (visual mode).\
