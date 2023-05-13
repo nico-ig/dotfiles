@@ -81,7 +81,7 @@ vim.o.mouse = 'v'
 -- Undotree responsible for the undo files
 opt.swapfile = false
 opt.backup = false
-vim.o.undodir = os.getenv("HOME") .. ".vim/undodir"
+vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
 -----------------------
@@ -99,7 +99,7 @@ vim.o.termguicolors = true
 -----------------------
 -- YANK
 -----------------------
-vim.cmd[[
+cmd[[
 augroup YankHighlight
   autocmd!
   autocmd TextYankPost * lua vim.highlight.on_yank()
@@ -109,15 +109,16 @@ augroup END
 -----------------------
 -- COMPLETITION
 -----------------------
-vim.cmd [[set wildmode=longest,list]]
+cmd [[set wildmode=longest,list]]
 vim.o.completeopt = 'menuone,noselect'
 
 -----------------------
 -- CURSOR
 -----------------------
-vim.cmd[[
+cmd[[
 augroup RestoreCursor
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
 augroup END
 ]]
+
