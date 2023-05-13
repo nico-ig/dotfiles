@@ -1,2 +1,4 @@
 */*.json
-spell
+*.json
+spell/*
+*/spell
