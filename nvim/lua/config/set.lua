@@ -1,87 +1,123 @@
--- [[ Setting options ]]
--- See `:help vim.o`
+-----------------------
+-- LOCAL ALIAS
+-----------------------
+local opt = vim.opt
+local cmd = vim.cmd
+local global = vim.g
 
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-----------------------
+-- LEADER KEY
+-----------------------
+global.mapleader = ' '
+global.maplocalleader = ' '
 
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Enable relative numbers
-vim.opt.nu = true
-vim.opt.relativenumber = true
-
-vim.opt.smartindent = true
-
--- Set tab to 2 spaces
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-
--- Make line numbers default
+-----------------------
+-- LINE NUMBERS
+-----------------------
 vim.wo.number = true
+opt.nu = true
+opt.relativenumber = true
 
--- Set an 80 column border
-vim.o.cc = 80
-
--- Highlith current cursorline
-vim.o.cursorline = true
-
--- Speed up scrolling
-vim.o.ttyfast = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Middle-click paste with
-vim.o.mouse = 'v'
-
--- Undotree responsible for the undo files
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
+-----------------------
+-- INDENT
+-----------------------
+opt.smartindent = true
 vim.o.breakindent = true
 
--- Save undo history
-vim.o.undofile = true
+-----------------------
+-- TABSTOP
+-----------------------
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
 
--- Case insensitive searching UNLESS /C or capital in search
+-----------------------
+-- COLUMN BORDER
+-----------------------
+vim.opt.wrap = true
+vim.opt.textwidth = 80
+cmd [[autocmd WinLeave * set colorcolumn=0]]
+cmd [[autocmd WinEnter * set colorcolumn=+0]]
+cmd [[autocmd BufEnter * set colorcolumn=+0]]
+
+-----------------------
+-- CURSORLINE
+-----------------------
+vim.o.cursorline = true
+cmd [[autocmd WinLeave * set nocursorline]]
+cmd [[autocmd WinEnter * set cursorline]]
+cmd [[autocmd BufEnter * set cursorline]]
+
+-----------------------
+-- SEARCH
+-----------------------
+opt.hlsearch = false
+opt.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+-----------------------
+-- SCROLL
+-----------------------
+opt.scrolloff = 5
+vim.o.ttyfast = true
 
--- Decrease update time
+-----------------------
+-- STATUS
+-----------------------
+opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum) : ''}%=%s"
+cmd [[set signcolumn=yes:1]]
+
+-----------------------
+-- MOUSE
+-----------------------
+vim.o.mouse = 'a'
+vim.o.mouse = 'v'
+
+-----------------------
+-- UNDO
+-----------------------
+-- Undotree responsible for the undo files
+opt.swapfile = false
+opt.backup = false
+vim.o.undodir = os.getenv("HOME") .. ".vim/undodir"
+opt.undofile = true
+
+-----------------------
+-- TIME
+-----------------------
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
+-----------------------
+-- COLORS
+-----------------------
 vim.o.termguicolors = true
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+-----------------------
+-- YANK
+-----------------------
+vim.cmd[[
+augroup YankHighlight
+  autocmd!
+  autocmd TextYankPost * lua vim.highlight.on_yank()
+augroup END
+]]
+
+-----------------------
+-- COMPLETITION
+-----------------------
+vim.cmd [[set wildmode=longest,list]]
+vim.o.completeopt = 'menuone,noselect'
+
+-----------------------
+-- CURSOR
+-----------------------
+vim.cmd[[
+augroup RestoreCursor
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
+augroup END
+]]
