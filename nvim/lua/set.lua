@@ -115,10 +115,9 @@ vim.o.completeopt = 'menuone,noselect'
 -----------------------
 -- CURSOR
 -----------------------
-cmd[[
-augroup RestoreCursor
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
-augroup END
-]]
-
+--cmd[[
+--augroup RestoreCursor
+--  autocmd!
+--  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
+--augroup END
+--]]
