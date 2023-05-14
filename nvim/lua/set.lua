@@ -35,7 +35,7 @@ opt.expandtab = true
 -----------------------
 -- COLUMN BORDER
 -----------------------
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.textwidth = 80
 cmd [[autocmd WinLeave * set colorcolumn=0]]
 cmd [[autocmd WinEnter * set colorcolumn=+0]]
