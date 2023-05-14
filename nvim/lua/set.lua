@@ -102,7 +102,7 @@ vim.o.termguicolors = true
 cmd[[
 augroup YankHighlight
   autocmd!
-  autocmd TextYankPost * lua vim.highlight.on_yank()
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="CursorLine", timeout=200}
 augroup END
 ]]
 
@@ -112,16 +112,15 @@ augroup END
 cmd [[set wildmode=longest,list]]
 vim.o.completeopt = 'menuone,noselect'
 
--- -----------------------
--- -- CURSOR
--- -----------------------
--- cmd[[
--- augroup RestoreCursor
---   autocmd!
---   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
--- augroup END
--- ]]
-
+-----------------------
+-- CURSOR
+-----------------------
+cmd[[
+augroup RestoreCursor
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+augroup END
+]]
 -----------------------
 -- COMMENT
 -----------------------
