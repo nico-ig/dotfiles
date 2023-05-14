@@ -51,5 +51,5 @@
 `<gcA>` = Insert comment to end of the current line and enters INSERT mode.
 
 # Plugins
-    * [Comment](https://github.com/numToStr/Comment.nvim)
+* [Comment](https://github.com/numToStr/Comment.nvim)
 
