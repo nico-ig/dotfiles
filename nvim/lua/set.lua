@@ -35,8 +35,8 @@ opt.expandtab = true
 -----------------------
 -- COLUMN BORDER
 -----------------------
-vim.opt.wrap = false
-vim.opt.textwidth = 80
+opt.wrap = false
+opt.textwidth = 80
 cmd [[autocmd WinLeave * set colorcolumn=0]]
 cmd [[autocmd WinEnter * set colorcolumn=+0]]
 cmd [[autocmd BufEnter * set colorcolumn=+0]]
@@ -87,9 +87,9 @@ opt.undofile = true
 -----------------------
 -- TIME
 -----------------------
-vim.o.updatetime = 250
+vim.o.updatetime = 300
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 500
 
 -----------------------
 -- COLORS
@@ -112,12 +112,17 @@ augroup END
 cmd [[set wildmode=longest,list]]
 vim.o.completeopt = 'menuone,noselect'
 
+-- -----------------------
+-- -- CURSOR
+-- -----------------------
+-- cmd[[
+-- augroup RestoreCursor
+--   autocmd!
+--   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
+-- augroup END
+-- ]]
+
 -----------------------
--- CURSOR
+-- COMMENT
 -----------------------
---cmd[[
---augroup RestoreCursor
---  autocmd!
---  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | normal! g`" | endif
---augroup END
---]]
+global.comment_empty_lines = 0

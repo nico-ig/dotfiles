@@ -1,2 +1,6 @@
 -- https://github.com/numToStr/Comment.nvim
-require('Comment').setup()
+require('Comment').setup({
+  ignore = '^$'
+})
+
+

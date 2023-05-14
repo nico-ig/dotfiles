@@ -52,4 +52,5 @@
 
 # Plugins
 * [Comment](https://github.com/numToStr/Comment.nvim)
+* [Which-key](https://github.com/folke/which-key.nvim)
 
