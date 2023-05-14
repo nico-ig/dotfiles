@@ -52,5 +52,6 @@
 
 # Plugins
 * [Comment](https://github.com/numToStr/Comment.nvim)
+* [TokyoNight](https://github.com/folke/tokyonight.nvim/tree/main)
 * [Which-key](https://github.com/folke/which-key.nvim)
 
