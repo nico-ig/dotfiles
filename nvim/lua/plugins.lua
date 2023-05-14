@@ -32,24 +32,24 @@ require('lazy').setup({
   -- KEYBINDS
   -----------------------
   'folke/which-key.nvim',
-  --
+  
   -- -----------------------
   -- -- GIT
   -- -----------------------
   -- 'tpope/vim-fugitive',
   -- 'tpope/vim-rhubarb',
-  --
+  
   -- -----------------------
   -- -- UNDO
   -- -----------------------
   -- 'mbbill/undotree',
-  --
+  
   -- -----------------------
   -- -- NAVIGATION
   -- -----------------------
   -- 'nvim-lua/plenary.nvim',
   -- 'ThePrimeagen/harpoon',
-  --
+  
   -- -----------------------
   -- -- AUTOCOMPLETION
   -- -----------------------
@@ -57,10 +57,10 @@ require('lazy').setup({
   -- 'hrsh7th/cmp-nvim-lsp',
   -- 'L3MON4D3/LuaSnip',
   -- 'saadparwaiz1/cmp_luasnip',
-  --
+  
   -- -- Detect tabstop and shiftwidth automatically
   -- 'tpope/vim-sleuth',
-  --
+  
   -- { -- Adds git releated signs to the gutter, as well as utilities for managing changes
   --   'lewis6991/gitsigns.nvim',
   --   opts = {
@@ -87,7 +87,7 @@ require('lazy').setup({
   --     },
   --   },
   -- },
-  --
+  
   -- { -- Add indentation guides even on blank lines
   --   'lukas-reineke/indent-blankline.nvim',
   --   -- Enable `lukas-reineke/indent-blankline.nvim`
@@ -97,7 +97,7 @@ require('lazy').setup({
   --     show_trailing_blankline_indent = false,
   --   },
   -- },
-  --
+  
   -- -- Fuzzy Finder (files, lsp, etc)
   -- { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
   --
@@ -111,7 +111,7 @@ require('lazy').setup({
   --     return vim.fn.executable 'make' == 1
   --   end,
   -- },
-  --
+  
   -- { -- Highlight, edit, and navigate code
   --   'nvim-treesitter/nvim-treesitter',
   --   dependencies = {
@@ -121,14 +121,14 @@ require('lazy').setup({
   --     pcall(require('nvim-treesitter.install').update { with_sync = true })
   --   end,
   -- },
-  --
+  
   -- { -- LSP Configuration & Plugins
   --   'neovim/nvim-lspconfig',
   --   dependencies = {
   --     -- Automatically install LSPs to stdpath for neovim
   --     'williamboman/mason.nvim',
   --     'williamboman/mason-lspconfig.nvim',
-  --
+  
   --     -- Useful status updates for LSP
   --     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
   --     { 'j-hui/fidget.nvim', opts = {} },
@@ -139,5 +139,3 @@ require('lazy').setup({
   -- },
 
 }, {})
-
-
