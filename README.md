@@ -4,7 +4,7 @@
 * **WM:** [Hyprland](https://hyprland.org)        
 * **Login Mannager:** [SDDM](https://wiki.archlinux.org/title/SDDM)
 * **Screen Locker:** 
-* **Wallpapper:** [swww](https://github.com/Horus645/swww)
+* **Wallpapper:** [wbg](https://codeberg.org/dnkl/wbg)
 * **Terminal:** [Kitty](https://github.com/kovidgoyal/kitty)
 * **Shell:** [Bash]
 * **App Launcher:** [wofii](https://github.com/uncomfyhalomacro/wofi)
