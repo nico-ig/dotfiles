@@ -1,0 +1,13 @@
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
+]
+
+[window]
+startup_mode = "Maximized"
+
+[font]
+size = 12
+normal = { family = "OpenDyslexicMono", style = "Regular" }
+bold = { family = "OpenDyslexicMono", style = "Bold" }
+italic = { family = "OpenDyslexicMono", style = "Italic" }
+bold_italic = { family = "OpenDyslexicMono", style = "BoldI Italic" }
