@@ -1,0 +1,30 @@
+[alias]
+    mrsrc = !sh -c 'git fetch $1 merge-requests/$2/head:exati-mr-$2 && git checkout exati-mr-$2' -
+
+# update branch created from merge request
+# params: <remote> <merge id>
+# ex: git umrsrc upstream 123
+    umrsrc = !sh -c 'git pull --rebase $1 merge-requests/$2/head' -
+
+# update branch created from merge request with upstream remote
+# params: <merge id>
+# ex: git uumrsrc 123
+    uumrsrc = !sh -c 'git pull --rebase upstream merge-requests/$1/head' -
+
+# create merge request with upstream in default
+# params:  <merge id>
+# ex: git mr 123
+    mr = !sh -c 'git mrsrc upstream $1' -
+
+# update branch created from merge request without any param
+# ex: git mru
+    mru = !sh -c 'git symbolic-ref --short HEAD | tr -d 'exati-mr-' | xargs git uumrsrc'
+
+# update origin remote branch with upstream remote branch
+# params: <branch name>
+# ex: git update master
+    update = !sh -c 'git checkout $1 && git pull --ff-only upstream $1 && git push origin $1' -
+
+# clear all unused branches (don't use if you waiting some mrs)
+# ex: git cb
+    cb = !sh -c 'git branch | grep -e "exati-$1" -i | grep -e "exati-$1" -i | xargs git branch -D' -

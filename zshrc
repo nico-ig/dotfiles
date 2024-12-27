@@ -17,7 +17,7 @@ ZSH_THEME="nico"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -78,6 +78,8 @@ plugins=(
   command-not-found
 )
 
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -89,9 +91,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vi'
+   export EDITOR='nvim'
 else
-   export EDITOR='hx'
+   export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -112,11 +114,16 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH="$PATH:/opt/nvim/" 
 
-[ -f "/home/nico-pessoal/.ghcup/env" ] && . "/home/nico-pessoal/.ghcup/env" # ghcup-envfpath+=${ZDOTDIR:-~}/.zsh_functions
-
 # Adapted from https://unix.stackexchange.com/a/113768/347104
 if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
   # Adapted from https://unix.stackexchange.com/a/176885/347104
   # Create session 'main' or attach to 'main' if already exists.
   tmux new-session -A -s main
 fi
+
+export PATH="$PATH:/home/exati/.local/bin/:/home/exati/.local/share/gcc-arm-none-eabi-9-2019-q4-major/bin/"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+eval "$(direnv hook zsh)"

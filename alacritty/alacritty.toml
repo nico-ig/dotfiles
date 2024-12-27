@@ -1,13 +1,15 @@
-import = [
-    "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
-]
 
 [window]
 startup_mode = "Maximized"
 
 [font]
 size = 12
-normal = { family = "OpenDyslexicMono", style = "Regular" }
-bold = { family = "OpenDyslexicMono", style = "Bold" }
-italic = { family = "OpenDyslexicMono", style = "Italic" }
-bold_italic = { family = "OpenDyslexicMono", style = "BoldI Italic" }
+normal = { family = "OpenDyslexicM Nerd Font", style = "Regular" }
+bold = { family = "OpenDyslexicM Nerd Font", style = "Bold" }
+italic = { family = "OpenDyslexicM Nerd Font", style = "Italic" }
+bold_italic = { family = "OpenDyslexicM Nerd Font", style = "BoldI Italic" }
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
+]
