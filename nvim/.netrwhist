@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/nico/Desafios-Programacao/semana7'
+let g:netrw_dirhist_9='/home/nico/t2otimizacao/src'
+let g:netrw_dirhist_8='/home/nico/.config/nvim/lua'
+let g:netrw_dirhist_7='/home/nico/.config/nvim'
+let g:netrw_dirhist_6='/home/nico/.config'
+let g:netrw_dirhist_5='/home/nico'
+let g:netrw_dirhist_4='/home/nico/dotfiles/nvim/lua'
+let g:netrw_dirhist_3='/home/nico/dotfiles/nvim'
+let g:netrw_dirhist_2='/home/nico/dotfiles'
+let g:netrw_dirhist_1='/home/nico'
