@@ -72,7 +72,7 @@ return {
     vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
     -- Set folding
-    vim.opt.foldlevelstart = 3
+    vim.opt.foldlevelstart = 2
     vim.opt.foldtext = ""
     vim.opt.foldmethod = "expr"
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
