@@ -5,7 +5,7 @@ return {
     local configs = require("nvim-treesitter.configs")
     configs.setup({
       ensure_installed = {
-        "c", "lua", "vim", "vimdoc", "elixir", "javascript", "html", "python", "typescript", "cpp"
+        "c", "lua", "vim", "vimdoc", "elixir", "javascript", "html", "python", "typescript", "cpp", "json"
       },
       sync_install = false,
       highlight = { enable = true },
@@ -53,6 +53,7 @@ return {
             ['[]'] = '@class.outer',
           },
         },
+
         swap = {
           enable = true,
           swap_next = {
@@ -69,5 +70,11 @@ return {
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
     vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+    -- Set folding
+    vim.opt.foldlevelstart = 3
+    vim.opt.foldtext = ""
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   end
 }

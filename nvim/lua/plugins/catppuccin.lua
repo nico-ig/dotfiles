@@ -8,6 +8,7 @@ return {
     flavour = "auto",
     show_end_of_buffer = true,
     dim_inactive = { enabled = true}})
+    vim.opt.termguicolors = true
     vim.cmd.colorscheme("catppuccin-frappe")
   end,
   opts = {
