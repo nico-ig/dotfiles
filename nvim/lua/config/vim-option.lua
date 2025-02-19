@@ -27,7 +27,7 @@ opt.expandtab = true
 -- COLUMN BORDER
 -----------------------
 opt.wrap = true
-opt.textwidth = 80
+opt.textwidth = 100
 cmd [[autocmd WinLeave * set colorcolumn=0]]
 cmd [[autocmd WinEnter * set colorcolumn=+0]]
 cmd [[autocmd BufEnter * set colorcolumn=+0]]
