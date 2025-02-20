@@ -1,1 +1,7 @@
-return { 'echasnovski/mini.nvim', version = false }
+return {
+  'echasnovski/mini.nvim',
+  version = false,
+  config = function()
+    require('mini.pairs').setup()
+  end,
+}
