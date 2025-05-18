@@ -28,3 +28,6 @@
 # clear all unused branches (don't use if you waiting some mrs)
 # ex: git cb
     cb = !sh -c 'git branch | grep -e "exati-$1" -i | grep -e "exati-$1" -i | xargs git branch -D' -
+[user]
+	name = Nico Ramos
+	email = nigr21@inf.ufpr.br
